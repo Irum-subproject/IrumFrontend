@@ -5,7 +5,7 @@
 import {AppRegistry, SafeAreaView, TextInput} from 'react-native';
 import {name as appName} from './app.json';
 import {NavigationContainer} from '@react-navigation/native';
-import RootNavigator from './src/components/navigation/RootNavigator';
+import RootNavigator from 'navigation/RootNavigator';
 import React, {useState} from 'react';
 import {ThemeProvider} from 'styled-components';
 import {typo, light} from 'themes';

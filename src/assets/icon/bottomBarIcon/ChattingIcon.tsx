@@ -1,7 +1,7 @@
 import React from 'react';
 import {SvgXml} from 'react-native-svg';
 
-function NewContractIcon({color}: {color: string}) {
+function ChattingIcon({color}: {color: string}) {
   return (
     <SvgXml
       xml={`
@@ -13,4 +13,4 @@ function NewContractIcon({color}: {color: string}) {
   );
 }
 
-export default NewContractIcon;
+export default ChattingIcon;

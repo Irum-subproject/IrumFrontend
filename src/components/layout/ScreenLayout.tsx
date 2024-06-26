@@ -45,7 +45,7 @@ function Header({
   const navigation = useNavigation();
 
   return (
-    <Container>
+    <Container isCenter={!isLogo && !isBackArrow && !isSearch && !isBell}>
       <Row20 alignItems="center">
         {isLogo && <Logo />}
         {isBackArrow && (
@@ -68,10 +68,10 @@ const HeaderTitle = styled.Text`
   font-size: ${props => `${props.theme.typo.subBody}px`};
   font-weight: ${props => props.theme.typo.normal};
 `;
-const Container = styled.View`
+const Container = styled.View<{isCenter: boolean}>`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: ${props => (props.isCenter ? 'center' : 'space-between')};
   align-items: center;
   height: 48px;
   width: 100%;
