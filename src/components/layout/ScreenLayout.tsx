@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import {Logo, BackArrow, Bell} from 'assets';
 import {useNavigation} from '@react-navigation/native';
 import {Row20} from 'components/atomic/RowColumn.tsx';
+import {Typo} from 'components/atomic/typography';
 interface headerInterface {
   isLogo?: boolean;
   title?: {
@@ -31,7 +32,9 @@ const HeaderSearchInput = styled.TextInput.attrs(props => ({
 }))`
   padding: 0;
   color: ${props => props.theme.palette.gray600};
-  font-size: ${props => `${props.theme.typo.subBody}px`};
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: ${props => props.theme.typo.subBody.size}px;
+  letter-spacing: ${props => props.theme.typo.subBody.letterSpacing}px;
   font-weight: ${props => props.theme.typo.normal};
 `;
 
@@ -56,18 +59,17 @@ function Header({
           />
         )}
         {isSearch && <HeaderSearch />}
-        {title?.isTitle && <HeaderTitle>{title.contents}</HeaderTitle>}
+        {title?.isTitle && (
+          <Typo.SubBody.Normal color={'gray600'}>
+            {title.contents}
+          </Typo.SubBody.Normal>
+        )}
       </Row20>
       {isBell && <Bell />}
     </Container>
   );
 }
 
-const HeaderTitle = styled.Text`
-  color: ${props => props.theme.palette.gray600};
-  font-size: ${props => `${props.theme.typo.subBody}px`};
-  font-weight: ${props => props.theme.typo.normal};
-`;
 const Container = styled.View<{isCenter: boolean}>`
   display: flex;
   flex-direction: row;

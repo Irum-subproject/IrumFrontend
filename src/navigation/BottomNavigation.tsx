@@ -2,7 +2,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BottomTabBar from 'components/layout/BottomTabBar.tsx';
 import {Chatting, Home, MyDoList, MyInfo, OtherDidList} from 'screens';
-import {useTheme} from 'styled-components';
 import {
   ChattingIcon,
   HomeIcon,
@@ -14,15 +13,13 @@ import {
 const Tap = createBottomTabNavigator();
 
 function BottomNavigation() {
-  const {palette} = useTheme();
-
   return (
     <Tap.Navigator
       tabBar={BottomTabBar}
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: palette.primary600,
-        tabBarInactiveTintColor: palette.gray900,
+        tabBarActiveTintColor: 'primary600',
+        tabBarInactiveTintColor: 'gray900',
       }}>
       <Tap.Screen
         name={'Home'}

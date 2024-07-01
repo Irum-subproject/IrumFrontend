@@ -2,6 +2,8 @@ import React from 'react';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import styled from 'styled-components/native';
 import {GestureResponderEvent} from 'react-native';
+import {Typo} from 'components/atomic/typography';
+import {DefaultTheme} from 'styled-components';
 
 function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   return (
@@ -15,8 +17,8 @@ function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
           color: string;
         }) => React.JSX.Element;
         const color = isFocused
-          ? (options.tabBarActiveTintColor as string)
-          : (options.tabBarInactiveTintColor as string);
+          ? (options.tabBarActiveTintColor as keyof DefaultTheme['palette'])
+          : (options.tabBarInactiveTintColor as keyof DefaultTheme['palette']);
 
         const navigateTo = (event: GestureResponderEvent) => {
           if (!isFocused && !event.defaultPrevented) {
@@ -27,7 +29,11 @@ function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
         return (
           <TabContainer key={index} onPress={event => navigateTo(event)}>
             {color && <Icon color={color} />}
-            {color && <Label color={color}>{labelContent}</Label>}
+            {color && (
+              <Typo.Caption.Normal color={color}>
+                {labelContent}
+              </Typo.Caption.Normal>
+            )}
           </TabContainer>
         );
       })}
@@ -35,11 +41,6 @@ function BottomTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   );
 }
 
-const Label = styled.Text<{color: string}>`
-  color: ${props => props.color};
-  font-size: ${props => props.theme.typo.caption}px;
-  font-weight: ${props => props.theme.typo.normal};
-`;
 const TabContainer = styled.Pressable`
   display: flex;
   align-items: center;
