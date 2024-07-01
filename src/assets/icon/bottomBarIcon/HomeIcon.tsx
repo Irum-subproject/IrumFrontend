@@ -1,8 +1,9 @@
 import React from 'react';
 import {SvgXml} from 'react-native-svg';
 import {useTheme} from 'styled-components';
+import IconPropsInterface from 'assets/icon/iconPropsInterface.ts';
 
-function HomeIcon({color}: {color: string}) {
+function HomeIcon({color}: IconPropsInterface) {
   const {palette} = useTheme();
   const paletteColor = palette[color as keyof typeof palette] || color;
 

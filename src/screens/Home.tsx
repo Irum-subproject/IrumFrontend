@@ -1,9 +1,19 @@
 import React, {Fragment} from 'react';
 import ScreenLayout from 'components/layout/ScreenLayout.tsx';
-import {Col20, Col4, Col8, Row0, Row12} from 'components/atomic/RowColumn.tsx';
+import {
+  Col20,
+  Col24,
+  Col4,
+  Col8,
+  Row0,
+  Row12,
+} from 'components/atomic/RowColumn.tsx';
 import {Typo} from 'components/atomic/typography';
 import styled from 'styled-components/native';
-import ShortButton from 'components/atomic/buttons/ShortButton.tsx';
+import {ShortButton} from 'components/atomic/buttons';
+import Divider from 'components/atomic/Divider.tsx';
+import IconButton from 'components/atomic/buttons/IconButton.tsx';
+import {ArrowIcon} from 'assets';
 
 function Home(): React.JSX.Element {
   return (
@@ -12,6 +22,7 @@ function Home(): React.JSX.Element {
       backgroundColor={'gray100'}>
       <Fragment>
         <Col20 width={'100%'} padding={[20]}>
+          {/*pay and paid section*/}
           <Row12 width={'100%'} justifyContent={'space-between'}>
             <BoxContainer justifyContent={'center'} alignItems={'center'}>
               <Col4>
@@ -34,6 +45,7 @@ function Home(): React.JSX.Element {
               </Col4>
             </BoxContainer>
           </Row12>
+          {/*timer section*/}
           <BoxContainer>
             <Col8>
               <Typo.Body.Semi color={'gray400'}>수학 공부</Typo.Body.Semi>
@@ -52,6 +64,35 @@ function Home(): React.JSX.Element {
                 />
               </Row0>
             </Col8>
+            <Divider />
+            <Col8>
+              <Typo.Body.Semi color={'gray400'}>운동하기</Typo.Body.Semi>
+              <Row0
+                width={'100%'}
+                justifyContent={'space-between'}
+                alignItems={'center'}>
+                <Typo.Title.Semi color={'primary700'}>
+                  -00 : 02 : 17
+                </Typo.Title.Semi>
+                <ShortButton
+                  buttonColor={'primary600'}
+                  buttonTitle={'인증하기'}
+                  titleColor={'gray50'}
+                  handler={() => {}}
+                />
+              </Row0>
+            </Col8>
+          </BoxContainer>
+          {/*list section*/}
+          <BoxContainer>
+            <Col24 width={'100%'}>
+              <Row0 justifyContent={'space-between'} alignItems={'center'}>
+                <Typo.Body.Semi color={'gray700'}>목록</Typo.Body.Semi>
+                <IconButton handler={() => {}}>
+                  <ArrowIcon rotate={180} />
+                </IconButton>
+              </Row0>
+            </Col24>
           </BoxContainer>
         </Col20>
       </Fragment>

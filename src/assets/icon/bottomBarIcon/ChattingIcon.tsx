@@ -1,8 +1,9 @@
 import React from 'react';
 import {SvgXml} from 'react-native-svg';
 import {useTheme} from 'styled-components';
+import IconPropsInterface from 'assets/icon/iconPropsInterface.ts';
 
-function ChattingIcon({color}: {color: string}) {
+function ChattingIcon({color}: IconPropsInterface) {
   const {palette} = useTheme();
   const paletteColor = palette[color as keyof typeof palette];
 

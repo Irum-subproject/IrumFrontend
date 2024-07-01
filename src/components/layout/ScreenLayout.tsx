@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
-import {Logo, BackArrow, Bell} from 'assets';
+import {Logo, ArrowIcon, Bell} from 'assets';
 import {useNavigation} from '@react-navigation/native';
 import {Row20} from 'components/atomic/RowColumn.tsx';
 import {Typo} from 'components/atomic/typography';
+import {IconButton} from 'components/atomic/buttons';
 interface headerInterface {
   isLogo?: boolean;
   title?: {
@@ -52,11 +53,12 @@ function Header({
       <Row20 alignItems="center">
         {isLogo && <Logo />}
         {isBackArrow && (
-          <BackArrow
-            onPress={() => {
+          <IconButton
+            handler={() => {
               navigation.goBack();
-            }}
-          />
+            }}>
+            <ArrowIcon />
+          </IconButton>
         )}
         {isSearch && <HeaderSearch />}
         {title?.isTitle && (
