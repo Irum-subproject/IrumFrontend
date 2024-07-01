@@ -1,9 +1,11 @@
 import styled from 'styled-components/native';
 
 interface RowColumnInterface {
-  padding?: [number, number] | [number];
+  flex?: number;
   justifyContent?: string;
   alignItems?: string;
+  width?: string;
+  padding?: [number, number] | [number];
   backgroundColor?: string;
 }
 
@@ -12,13 +14,18 @@ const RowColumnBase = styled.View<RowColumnInterface>`
   justify-content: ${props =>
     props.justifyContent ? props.justifyContent : 'start'};
   align-items: ${props => (props.alignItems ? props.alignItems : 'start')};
+  ${props => props.flex && `flex: ${props.flex};`}
+  ${props => props.width && `width: ${props.width};`}
   padding: ${props =>
     props.padding
       ? props.padding[1]
         ? `${props.padding[0]}px ${props.padding[1]}px`
         : `${props.padding[0]}px`
       : 0};
-  background-color: ${props => props.backgroundColor};
+  background-color: ${props =>
+    props.backgroundColor
+      ? props.theme.palette[props.backgroundColor]
+      : 'none'};
 `;
 const RowBase = styled(RowColumnBase)`
   flex-direction: row;

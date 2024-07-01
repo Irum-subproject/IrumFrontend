@@ -106,9 +106,10 @@ function ScreenLayout({
 }
 
 const Screen = styled.ScrollView<{backgroundColor?: string}>`
-  padding: 0 20px;
   background-color: ${props =>
-    props.backgroundColor ? props.backgroundColor : props.theme.palette.gray50};
+    props.backgroundColor
+      ? props.theme.palette[props.backgroundColor]
+      : props.theme.palette.gray100};
 `;
 
 export default ScreenLayout;

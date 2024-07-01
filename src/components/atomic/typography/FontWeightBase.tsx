@@ -6,7 +6,7 @@ const SemiBase = styled.Text<{color?: string}>`
       ? props.theme.palette[props.color]
       : props.theme.palette.gray900};
   font-family: 'Pretendard Variable';
-  font-weight: ${props => props.theme.typo.semi};
+  font-weight: 600;
 `;
 
 const NormalBase = styled.Text<{color?: string}>`
