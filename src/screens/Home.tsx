@@ -49,10 +49,7 @@ function Home(): React.JSX.Element {
           <BoxContainer>
             <Col8>
               <Typo.Body.Semi color={'gray400'}>수학 공부</Typo.Body.Semi>
-              <Row0
-                width={'100%'}
-                justifyContent={'space-between'}
-                alignItems={'center'}>
+              <Row0>
                 <Typo.Title.Semi color={'gray700'}>
                   00 : 31 : 54
                 </Typo.Title.Semi>
@@ -67,10 +64,7 @@ function Home(): React.JSX.Element {
             <Divider />
             <Col8>
               <Typo.Body.Semi color={'gray400'}>운동하기</Typo.Body.Semi>
-              <Row0
-                width={'100%'}
-                justifyContent={'space-between'}
-                alignItems={'center'}>
+              <Row0>
                 <Typo.Title.Semi color={'primary700'}>
                   -00 : 02 : 17
                 </Typo.Title.Semi>
@@ -86,12 +80,17 @@ function Home(): React.JSX.Element {
           {/*list section*/}
           <BoxContainer>
             <Col24 width={'100%'}>
-              <Row0 justifyContent={'space-between'} alignItems={'center'}>
+              <Row0>
                 <Typo.Body.Semi color={'gray700'}>목록</Typo.Body.Semi>
                 <IconButton handler={() => {}}>
                   <ArrowIcon rotate={180} />
                 </IconButton>
               </Row0>
+              <Col20>
+                <Row0>
+                  {/*<DoOrDidItem/>*/}
+                </Row0>
+              </Col20>
             </Col24>
           </BoxContainer>
         </Col20>

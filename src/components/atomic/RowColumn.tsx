@@ -34,7 +34,15 @@ const ColBase = styled(RowColumnBase)`
   flex-direction: column;
 `;
 
-const Row0 = styled(RowBase)`
+const Row0 = styled(RowBase).attrs<{justifyContent?: string; width?: string}>(
+  props => ({
+    justifyContent: props.justifyContent
+      ? props.justifyContent
+      : 'space-between',
+    alignItems: props.alignItems ? props.alignItems : 'center',
+    width: props.width ? props.width : '100%',
+  }),
+)`
   gap: 0;
 `;
 const Row4 = styled(RowBase)`
