@@ -53,7 +53,8 @@ const Container = styled.View`
   width: 100%;
   height: 55px;
   padding: 8px 20px;
-  border-top: 1px solid ${props => props.theme.palette.gray100};
+  border-top-width: 1px;
+  border-color: ${props => props.theme.palette.gray100};
   border-radius: 8px 8px 0 0;
   background-color: ${props => props.theme.palette.gray50};
 `;

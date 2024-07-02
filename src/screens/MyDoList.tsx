@@ -10,8 +10,9 @@ import {
 } from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
-import {ShortButton} from 'components/atomic/buttons';
+import {LongButton, ShortButton} from 'components/atomic/buttons';
 import Divider from 'components/atomic/Divider.tsx';
+import ArrowIcon from 'assets/icon/arrow/ArrowIcon.tsx';
 
 function MyDoList() {
   const DoneInfo = [
@@ -181,6 +182,14 @@ function MyDoList() {
                 />
               ))}
             </Col24>
+            <Divider />
+            <LongButton
+              handler={() => {}}
+              buttonColor={'gray100'}
+              buttonTitle={'더보기'}
+              titleColor={'gray500'}
+              ButtonIcon={<ArrowIcon rotate={270} color={'gray500'} size={12} />}
+            />
           </Section>
         </Col10>
       </Fragment>

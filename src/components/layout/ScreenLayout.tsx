@@ -113,7 +113,7 @@ const Screen = styled.ScrollView<{backgroundColor?: string}>`
     props.backgroundColor
       ? props.theme.palette[props.backgroundColor]
       : props.theme.palette.gray100};
-  margin-bottom: 55px;
+  margin-bottom: 48px;
 `;
 
 export default ScreenLayout;

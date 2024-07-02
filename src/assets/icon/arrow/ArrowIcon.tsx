@@ -6,10 +6,13 @@ import styled from 'styled-components/native';
 function ArrowIcon({color, size, rotate}: IconPropsInterface) {
   const {palette} = useTheme();
   const paletteColor = palette[color as keyof typeof palette];
+  const realSize = size ? size : 18;
 
   return (
     <IconContainer rotate={rotate} size={size}>
       <SvgXml
+        width={realSize}
+        height={realSize}
         xml={`
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <mask id="mask0_575_727" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="18">

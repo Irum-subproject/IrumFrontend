@@ -7,7 +7,10 @@ function RootNavigator() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Stack.Screen name={'tab'} component={BottomNavigation} />
       <Stack.Screen name={'Home'} component={Home} />
       <Stack.Screen name={'MyDoList'} component={MyDoList} />
