@@ -49,7 +49,7 @@ const Row4 = styled(RowBase)`
   gap: 4px;
 `;
 const Row8 = styled(RowBase)`
-  gap: 8;
+  gap: 8px;
 `;
 const Row12 = styled(RowBase)`
   gap: 12px;
@@ -69,6 +69,9 @@ const Col4 = styled(ColBase)`
 `;
 const Col8 = styled(ColBase)`
   gap: 8px;
+`;
+const Col10 = styled(ColBase)`
+  gap: 10px;
 `;
 const Col12 = styled(ColBase)`
   gap: 12px;
@@ -93,6 +96,7 @@ export {
   Col0,
   Col4,
   Col8,
+  Col10,
   Col12,
   Col20,
   Col22,

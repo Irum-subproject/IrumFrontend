@@ -1,4 +1,4 @@
-import ScreenLayout from 'components/layout/ScreenLayout.tsx';
+import {ScreenLayout} from 'components/layout';
 import {Fragment} from 'react';
 import {Text} from 'react-native';
 

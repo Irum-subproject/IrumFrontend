@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import BottomTabBar from 'components/layout/BottomTabBar.tsx';
+import {BottomTabBar} from 'components/layout';
 import {Chatting, Home, MyDoList, MyInfo, OtherDidList} from 'screens';
 import {
   ChattingIcon,

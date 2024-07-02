@@ -81,7 +81,8 @@ const Container = styled.View<{isCenter: boolean}>`
   width: 100%;
   padding: 0 20px;
   background-color: ${props => props.theme.palette.gray50};
-  border-bottom: 1px solid ${props => props.theme.palette.gray100};
+  border-color: ${props => props.theme.palette.gray100};
+  border-bottom-width: 1px;
 `;
 
 function ScreenLayout({
@@ -89,7 +90,7 @@ function ScreenLayout({
   headerOption,
   backgroundColor,
 }: {
-  children: React.JSX.Element;
+  children: React.ReactNode;
   headerOption?: headerInterface;
   backgroundColor?: string;
 }) {
@@ -112,6 +113,7 @@ const Screen = styled.ScrollView<{backgroundColor?: string}>`
     props.backgroundColor
       ? props.theme.palette[props.backgroundColor]
       : props.theme.palette.gray100};
+  margin-bottom: 55px;
 `;
 
 export default ScreenLayout;
