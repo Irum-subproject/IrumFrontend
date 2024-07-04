@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {DoOrDidItem, ScreenLayout} from 'components/layout';
 import {
   Col10,
@@ -13,6 +13,120 @@ import {Typo} from 'components/atomic/typography';
 import {LongButton, ShortButton} from 'components/atomic/buttons';
 import Divider from 'components/atomic/Divider.tsx';
 import ArrowIcon from 'assets/icon/arrow/ArrowIcon.tsx';
+
+const taskPeriod = [
+  {
+    period: '오늘',
+    periodColor: 'warnRed',
+  },
+  {
+    period: '이번 주',
+    periodColor: 'warnYellow',
+  },
+  {
+    period: '이번 달',
+    periodColor: 'primary600',
+  },
+];
+
+function DoTask({index}: {index: number}) {
+  return (
+    <Fragment>
+      <Col24>
+        <Row0>
+          <Typo.Body.Semi>{taskPeriod[index].period}</Typo.Body.Semi>
+          <Row4>
+            <Typo.Caption.Regular color={taskPeriod[index].periodColor}>
+              01시 37분
+            </Typo.Caption.Regular>
+            <Typo.Caption.Regular color={'gray400'}>남음</Typo.Caption.Regular>
+          </Row4>
+        </Row0>
+        <Col20>
+          <DoOrDidItem
+            Icon={<TempIcon />}
+            Title={<Typo.Content.Normal>수학 공부</Typo.Content.Normal>}
+            SubTitle={
+              <Typo.Caption.Regular color={'gray400'}>
+                1시간 동안
+              </Typo.Caption.Regular>
+            }
+            Button={
+              <ShortButton
+                buttonColor={'warnRed'}
+                buttonTitle={'중단'}
+                titleColor={'gray50'}
+                handler={() => {}}
+              />
+            }
+            ButtonDescription={
+              <Row4>
+                <Typo.Caption.Normal color={'gray400'}>
+                  00:31:54
+                </Typo.Caption.Normal>
+                <Typo.Caption.Normal color={'gray400'}>
+                  남음
+                </Typo.Caption.Normal>
+              </Row4>
+            }
+          />
+          <DoOrDidItem
+            Icon={<TempIcon />}
+            Title={<Typo.Content.Normal>운동하기</Typo.Content.Normal>}
+            SubTitle={
+              <Typo.Caption.Regular color={'gray400'}>
+                40분 동안
+              </Typo.Caption.Regular>
+            }
+            Button={
+              <ShortButton
+                buttonColor={'primary600'}
+                buttonTitle={'인증'}
+                titleColor={'gray50'}
+                handler={() => {}}
+              />
+            }
+            ButtonDescription={
+              <Row4>
+                <Typo.Caption.Normal color={'gray400'}>
+                  완료됨
+                </Typo.Caption.Normal>
+              </Row4>
+            }
+          />
+          <DoOrDidItem
+            Icon={<TempIcon />}
+            Title={<Typo.Content.Normal>6시 전에 일어나기</Typo.Content.Normal>}
+            SubTitle={
+              <Typo.Caption.Regular color={'gray400'}>
+                시간 제한 없음
+              </Typo.Caption.Regular>
+            }
+            Button={
+              <ShortButton
+                buttonColor={'gray100'}
+                buttonTitle={'시작'}
+                titleColor={'gray500'}
+                handler={() => {}}
+              />
+            }
+            ButtonDescription={
+              <Row4>
+                <Typo.Caption.Normal color={'gray400'}>
+                  00:31:54
+                </Typo.Caption.Normal>
+                <Typo.Caption.Normal color={'gray400'}>
+                  남음
+                </Typo.Caption.Normal>
+              </Row4>
+            }
+          />
+        </Col20>
+      </Col24>
+      <Divider />
+    </Fragment>
+  );
+}
 
 function MyDoList() {
   const DoneInfo = [
@@ -29,6 +143,7 @@ function MyDoList() {
       taskTime: '시간 제한 없음',
     },
   ];
+  const [isShowMore, setIsShowMore] = useState(false);
 
   return (
     <ScreenLayout
@@ -65,102 +180,9 @@ function MyDoList() {
             </Col8>
           </Section>
           <Section>
-            <Col24>
-              <Row0>
-                <Typo.Body.Semi>오늘</Typo.Body.Semi>
-                <Row4>
-                  <Typo.Caption.Regular color={'warnRed'}>
-                    01시 37분
-                  </Typo.Caption.Regular>
-                  <Typo.Caption.Regular color={'gray400'}>
-                    남음
-                  </Typo.Caption.Regular>
-                </Row4>
-              </Row0>
-              <Col20>
-                <DoOrDidItem
-                  Icon={<TempIcon />}
-                  Title={<Typo.Content.Normal>수학 공부</Typo.Content.Normal>}
-                  SubTitle={
-                    <Typo.Caption.Regular color={'gray400'}>
-                      1시간 동안
-                    </Typo.Caption.Regular>
-                  }
-                  Button={
-                    <ShortButton
-                      buttonColor={'warnRed'}
-                      buttonTitle={'중단'}
-                      titleColor={'gray50'}
-                      handler={() => {}}
-                    />
-                  }
-                  ButtonDescription={
-                    <Row4>
-                      <Typo.Caption.Normal color={'gray400'}>
-                        00:31:54
-                      </Typo.Caption.Normal>
-                      <Typo.Caption.Normal color={'gray400'}>
-                        남음
-                      </Typo.Caption.Normal>
-                    </Row4>
-                  }
-                />
-                <DoOrDidItem
-                  Icon={<TempIcon />}
-                  Title={<Typo.Content.Normal>운동하기</Typo.Content.Normal>}
-                  SubTitle={
-                    <Typo.Caption.Regular color={'gray400'}>
-                      40분 동안
-                    </Typo.Caption.Regular>
-                  }
-                  Button={
-                    <ShortButton
-                      buttonColor={'primary600'}
-                      buttonTitle={'인증'}
-                      titleColor={'gray50'}
-                      handler={() => {}}
-                    />
-                  }
-                  ButtonDescription={
-                    <Row4>
-                      <Typo.Caption.Normal color={'gray400'}>
-                        완료됨
-                      </Typo.Caption.Normal>
-                    </Row4>
-                  }
-                />
-                <DoOrDidItem
-                  Icon={<TempIcon />}
-                  Title={
-                    <Typo.Content.Normal>6시 전에 일어나기</Typo.Content.Normal>
-                  }
-                  SubTitle={
-                    <Typo.Caption.Regular color={'gray400'}>
-                      시간 제한 없음
-                    </Typo.Caption.Regular>
-                  }
-                  Button={
-                    <ShortButton
-                      buttonColor={'gray100'}
-                      buttonTitle={'시작'}
-                      titleColor={'gray500'}
-                      handler={() => {}}
-                    />
-                  }
-                  ButtonDescription={
-                    <Row4>
-                      <Typo.Caption.Normal color={'gray400'}>
-                        00:31:54
-                      </Typo.Caption.Normal>
-                      <Typo.Caption.Normal color={'gray400'}>
-                        남음
-                      </Typo.Caption.Normal>
-                    </Row4>
-                  }
-                />
-              </Col20>
-            </Col24>
-            <Divider />
+            <DoTask index={0} />
+            {isShowMore && <DoTask index={1} />}
+            {isShowMore && <DoTask index={2} />}
             <Col24>
               <Row0>
                 <Typo.Body.Semi>완료됨</Typo.Body.Semi>
@@ -183,13 +205,19 @@ function MyDoList() {
               ))}
             </Col24>
             <Divider />
-            <LongButton
-              handler={() => {}}
-              buttonColor={'gray100'}
-              buttonTitle={'더보기'}
-              titleColor={'gray500'}
-              ButtonIcon={<ArrowIcon rotate={270} color={'gray500'} size={12} />}
-            />
+            {!isShowMore && (
+              <LongButton
+                handler={() => {
+                  setIsShowMore(true);
+                }}
+                buttonColor={'gray100'}
+                buttonTitle={'더보기'}
+                titleColor={'gray500'}
+                ButtonIcon={
+                  <ArrowIcon rotate={270} color={'gray500'} size={12} />
+                }
+              />
+            )}
           </Section>
         </Col10>
       </Fragment>

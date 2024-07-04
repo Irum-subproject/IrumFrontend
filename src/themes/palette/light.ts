@@ -14,7 +14,7 @@ const light: palette = {
   primary50: '#EDFFF4',
   primary100: '#DEFFEB',
   primary200: '#83D1A2',
-  primary300: '#29FF7F',
+  primary300: '#5EB67C',
   primary400: '#00F863',
   primary500: '#2DCE6D',
   primary600: '#2ABD5C',
