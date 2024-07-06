@@ -1,9 +1,8 @@
 import {ScreenLayout} from 'components/layout';
-import {Fragment} from 'react';
 import {Col10, Col20, Col24} from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
-import {DoOrDidItem} from 'components/layout';
+import {TaskItemLayout} from 'components/layout';
 import {ShortButton} from 'components/atomic/buttons';
 import Divider from 'components/atomic/Divider.tsx';
 
@@ -115,7 +114,7 @@ function Section({
       <Col20>
         {impossible.isImpossible &&
           impossible.whoImpossible.map((v, i) => (
-            <DoOrDidItem
+            <TaskItemLayout
               key={i}
               Icon={<TempIcon />}
               Title={
@@ -136,7 +135,7 @@ function Section({
         {impossible.isImpossible && <Divider />}
         {addTime.isAddTime &&
           addTime.addTimeData.map((v, i) => (
-            <DoOrDidItem
+            <TaskItemLayout
               key={i}
               Icon={<TempIcon />}
               Title={
@@ -163,7 +162,7 @@ function Section({
           ))}
         {addTime.isAddTime && <Divider />}
         {didTaskList.map((v, i) => (
-          <DoOrDidItem
+          <TaskItemLayout
             key={i}
             Icon={<TempIcon />}
             Title={
@@ -181,7 +180,11 @@ function Section({
                 handler={() => {}}
                 buttonColor={'gray100'}
                 buttonTitle={'확인'}
-                titleColor={'gray500'}
+                titleColor={
+                  impossible.isImpossible || addTime.isAddTime
+                    ? 'gray300'
+                    : 'gray500'
+                }
               />
             }
           />
@@ -201,23 +204,21 @@ function OtherDidList() {
   return (
     <ScreenLayout
       headerOption={{title: {isTitle: true, contents: '할 일 관리'}}}>
-      <Fragment>
-        <Col10>
-          {sectionInfo.map(
-            (v, i) =>
-              v.didTaskList !== undefined && (
-                <Section
-                  key={i}
-                  member={v.member}
-                  sectionTitle={v.sectionTitle}
-                  impossible={v.impossible}
-                  addTime={v.addTime}
-                  didTaskList={v.didTaskList}
-                />
-              ),
-          )}
-        </Col10>
-      </Fragment>
+      <Col10>
+        {sectionInfo.map(
+          (v, i) =>
+            v.didTaskList !== undefined && (
+              <Section
+                key={i}
+                member={v.member}
+                sectionTitle={v.sectionTitle}
+                impossible={v.impossible}
+                addTime={v.addTime}
+                didTaskList={v.didTaskList}
+              />
+            ),
+        )}
+      </Col10>
     </ScreenLayout>
   );
 }

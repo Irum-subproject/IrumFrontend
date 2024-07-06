@@ -1,20 +1,13 @@
 import React, {Fragment} from 'react';
-import {DoOrDidItem, ScreenLayout} from 'components/layout';
-import {
-  Col20,
-  Col24,
-  Col4,
-  Col8,
-  Row0,
-  Row12,
-  Row4,
-} from 'components/atomic/RowColumn.tsx';
+import {TaskItemLayout, ScreenLayout, TaskBoxLayout} from 'components/layout';
+import {Col20, Col4, Row12, Row4} from 'components/atomic/RowColumn.tsx';
 import {Typo} from 'components/atomic/typography';
 import styled from 'styled-components/native';
 import {ShortButton} from 'components/atomic/buttons';
 import Divider from 'components/atomic/Divider.tsx';
 import IconButton from 'components/atomic/buttons/IconButton.tsx';
 import {ArrowIcon} from 'assets';
+import {Timer} from 'components/atomic';
 
 const MyDoListInfo = [
   {
@@ -95,177 +88,151 @@ function Home(): React.JSX.Element {
           </Row12>
           {/*timer section*/}
           <BoxContainer>
-            <Col8>
-              <Typo.Body.Semi color={'gray400'}>수학 공부</Typo.Body.Semi>
-              <Row0>
-                <Typo.Title.Semi color={'gray700'}>
-                  00 : 31 : 54
-                </Typo.Title.Semi>
-                <ShortButton
-                  buttonColor={'warnRed'}
-                  buttonTitle={'중단하기'}
-                  titleColor={'gray50'}
-                  handler={() => {}}
-                />
-              </Row0>
-            </Col8>
+            <Timer defaultTime={'00 : 31 : 54'} timerTitle={'수학 공부'} />
             <Divider />
-            <Col8>
-              <Typo.Body.Semi color={'gray400'}>운동하기</Typo.Body.Semi>
-              <Row0>
-                <Typo.Title.Semi color={'primary700'}>
-                  -00 : 02 : 17
-                </Typo.Title.Semi>
-                <ShortButton
-                  buttonColor={'primary600'}
-                  buttonTitle={'인증하기'}
-                  titleColor={'gray50'}
-                  handler={() => {}}
-                />
-              </Row0>
-            </Col8>
+            <Timer defaultTime={'- 00 : 02 : 17'} timerTitle={'운동하기'} />
           </BoxContainer>
           {/*list section*/}
           <BoxContainer>
-            <Col24 width={'100%'}>
-              <Row0>
-                <Typo.Body.Semi color={'gray700'}>목록</Typo.Body.Semi>
-                <IconButton handler={() => {}}>
-                  <ArrowIcon rotate={180} color={'gray300'} />
-                </IconButton>
-              </Row0>
-              <Col20>
-                {MyDoListInfo.map((v, i) => (
-                  <DoOrDidItem
-                    key={i}
-                    Icon={<TempIcon />}
-                    Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
-                    SubTitle={
-                      <Row4>
-                        <Typo.Caption.Regular color={v.leftTimeColor}>
-                          {v.leftTime}
-                        </Typo.Caption.Regular>
-                        <Typo.Caption.Regular color={'gray400'}>
-                          남음
-                        </Typo.Caption.Regular>
-                      </Row4>
-                    }
-                    Button={
-                      <ShortButton
-                        buttonColor={'gray100'}
-                        buttonTitle={'시작'}
-                        titleColor={'gray500'}
-                        handler={() => {}}
-                      />
-                    }
-                  />
-                ))}
-              </Col20>
-            </Col24>
+            <TaskBoxLayout
+              titleSection={{
+                left: '목록',
+                right: (
+                  <IconButton handler={() => {}}>
+                    <ArrowIcon rotate={180} color={'gray300'} />
+                  </IconButton>
+                ),
+              }}>
+              {MyDoListInfo.map((v, i) => (
+                <TaskItemLayout
+                  key={i}
+                  Icon={<TempIcon />}
+                  Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
+                  SubTitle={
+                    <Row4>
+                      <Typo.Caption.Regular color={v.leftTimeColor}>
+                        {v.leftTime}
+                      </Typo.Caption.Regular>
+                      <Typo.Caption.Regular color={'gray400'}>
+                        남음
+                      </Typo.Caption.Regular>
+                    </Row4>
+                  }
+                  Button={
+                    <ShortButton
+                      buttonColor={'gray100'}
+                      buttonTitle={'시작'}
+                      titleColor={'gray500'}
+                      handler={() => {}}
+                    />
+                  }
+                />
+              ))}
+            </TaskBoxLayout>
           </BoxContainer>
           {/*manage section*/}
           <BoxContainer>
-            <Col24 width={'100%'}>
-              <Row0>
-                <Typo.Body.Semi color={'gray700'}>관리</Typo.Body.Semi>
-                <IconButton handler={() => {}}>
-                  <ArrowIcon rotate={180} color={'gray300'} />
-                </IconButton>
-              </Row0>
-              <Col20>
-                {OtherDidListInfo.map((v, i) => (
-                  <DoOrDidItem
-                    key={i}
-                    Icon={<TempIcon />}
-                    Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
-                    SubTitle={
-                      <Row4>
-                        <Typo.Caption.Regular color={'gray400'}>
-                          {v.leftTime}
-                        </Typo.Caption.Regular>
-                      </Row4>
-                    }
-                    Button={
-                      v.buttonType === 'check' ? (
-                        <ShortButton
-                          buttonColor={'gray100'}
-                          buttonTitle={'확인'}
-                          titleColor={'gray500'}
-                          handler={() => {}}
-                        />
-                      ) : (
-                        <ShortButton
-                          buttonColor={'primary600'}
-                          buttonTitle={'상세'}
-                          titleColor={'gray50'}
-                          handler={() => {}}
-                        />
-                      )
-                    }
-                  />
-                ))}
-              </Col20>
-            </Col24>
+            <TaskBoxLayout
+              titleSection={{
+                left: '관리',
+                right: (
+                  <IconButton handler={() => {}}>
+                    <ArrowIcon rotate={180} color={'gray300'} />
+                  </IconButton>
+                ),
+              }}>
+              {OtherDidListInfo.map((v, i) => (
+                <TaskItemLayout
+                  key={i}
+                  Icon={<TempIcon />}
+                  Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
+                  SubTitle={
+                    <Row4>
+                      <Typo.Caption.Regular color={'gray400'}>
+                        {v.leftTime}
+                      </Typo.Caption.Regular>
+                    </Row4>
+                  }
+                  Button={
+                    v.buttonType === 'check' ? (
+                      <ShortButton
+                        buttonColor={'gray100'}
+                        buttonTitle={'확인'}
+                        titleColor={'gray500'}
+                        handler={() => {}}
+                      />
+                    ) : (
+                      <ShortButton
+                        buttonColor={'primary600'}
+                        buttonTitle={'상세'}
+                        titleColor={'gray50'}
+                        handler={() => {}}
+                      />
+                    )
+                  }
+                />
+              ))}
+            </TaskBoxLayout>
           </BoxContainer>
           {/*contract section*/}
           <BoxContainer>
-            <Col24 width={'100%'}>
-              <Row0>
-                <Typo.Body.Semi color={'gray700'}>관리</Typo.Body.Semi>
-                <IconButton handler={() => {}}>
-                  <Row4 alignItems={'center'}>
-                    <Typo.Content.Normal color={'gray300'}>
-                      더보기
-                    </Typo.Content.Normal>
-                    <ArrowIcon rotate={270} color={'gray300'} />
-                  </Row4>
-                </IconButton>
-              </Row0>
-              <Col20>
-                {ContractInfo.map((v, i) => (
-                  <DoOrDidItem
-                    key={i}
-                    Icon={<TempIcon />}
-                    Title={
-                      <Row4>
-                        <Typo.Content.Normal>
-                          {v.contractName}
-                        </Typo.Content.Normal>
-                        <Typo.Content.Normal>-</Typo.Content.Normal>
-                        <Typo.Content.Normal>
-                          {v.contractMember}
-                        </Typo.Content.Normal>
-                      </Row4>
-                    }
-                    SubTitle={
-                      <Row4>
-                        <Typo.Caption.Regular color={'gray400'}>
-                          최소 기간
-                        </Typo.Caption.Regular>
-                        <Typo.Caption.Regular color={'gray400'}>
-                          {v.minimumContractPeriod}
-                        </Typo.Caption.Regular>
-                      </Row4>
-                    }
-                    Button={
-                      <IconButton handler={() => {}}>
-                        <ArrowIcon rotate={180} color={'gray300'} />
-                      </IconButton>
-                    }
-                  />
-                ))}
-                <Divider />
-                <DoOrDidItem
-                  Title={<Typo.Content.Normal>계약 추가</Typo.Content.Normal>}
+            <TaskBoxLayout
+              titleSection={{
+                left: '계약',
+                right: (
+                  <IconButton handler={() => {}}>
+                    <Row4 alignItems={'center'}>
+                      <Typo.Content.Normal color={'gray300'}>
+                        더보기
+                      </Typo.Content.Normal>
+                      <ArrowIcon rotate={270} color={'gray300'} />
+                    </Row4>
+                  </IconButton>
+                ),
+              }}>
+              {ContractInfo.map((v, i) => (
+                <TaskItemLayout
+                  key={i}
                   Icon={<TempIcon />}
+                  Title={
+                    <Row4>
+                      <Typo.Content.Normal>
+                        {v.contractName}
+                      </Typo.Content.Normal>
+                      <Typo.Content.Normal>-</Typo.Content.Normal>
+                      <Typo.Content.Normal>
+                        {v.contractMember}
+                      </Typo.Content.Normal>
+                    </Row4>
+                  }
+                  SubTitle={
+                    <Row4>
+                      <Typo.Caption.Regular color={'gray400'}>
+                        최소 기간
+                      </Typo.Caption.Regular>
+                      <Typo.Caption.Regular color={'gray400'}>
+                        {v.minimumContractPeriod}
+                      </Typo.Caption.Regular>
+                    </Row4>
+                  }
                   Button={
                     <IconButton handler={() => {}}>
                       <ArrowIcon rotate={180} color={'gray300'} />
                     </IconButton>
                   }
                 />
-              </Col20>
-            </Col24>
+              ))}
+            </TaskBoxLayout>
+            <Divider />
+            <TaskItemLayout
+              Title={<Typo.Content.Normal>계약 추가</Typo.Content.Normal>}
+              Icon={<TempIcon />}
+              Button={
+                <IconButton handler={() => {}}>
+                  <ArrowIcon rotate={180} color={'gray300'} />
+                </IconButton>
+              }
+            />
           </BoxContainer>
         </Col20>
       </Fragment>

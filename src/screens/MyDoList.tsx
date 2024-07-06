@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import {DoOrDidItem, ScreenLayout} from 'components/layout';
+import {TaskItemLayout, ScreenLayout} from 'components/layout';
 import {
   Col10,
   Col20,
@@ -43,7 +43,7 @@ function DoTask({index}: {index: number}) {
           </Row4>
         </Row0>
         <Col20>
-          <DoOrDidItem
+          <TaskItemLayout
             Icon={<TempIcon />}
             Title={<Typo.Content.Normal>수학 공부</Typo.Content.Normal>}
             SubTitle={
@@ -70,7 +70,7 @@ function DoTask({index}: {index: number}) {
               </Row4>
             }
           />
-          <DoOrDidItem
+          <TaskItemLayout
             Icon={<TempIcon />}
             Title={<Typo.Content.Normal>운동하기</Typo.Content.Normal>}
             SubTitle={
@@ -94,7 +94,7 @@ function DoTask({index}: {index: number}) {
               </Row4>
             }
           />
-          <DoOrDidItem
+          <TaskItemLayout
             Icon={<TempIcon />}
             Title={<Typo.Content.Normal>6시 전에 일어나기</Typo.Content.Normal>}
             SubTitle={
@@ -188,7 +188,7 @@ function MyDoList() {
                 <Typo.Body.Semi>완료됨</Typo.Body.Semi>
               </Row0>
               {DoneInfo.map((v, i) => (
-                <DoOrDidItem
+                <TaskItemLayout
                   key={i}
                   Icon={<TempIcon />}
                   Title={

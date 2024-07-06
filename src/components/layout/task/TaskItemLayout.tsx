@@ -9,7 +9,7 @@ interface DoOrDidItemProps {
   ButtonDescription?: React.ReactNode;
 }
 
-function DoOrDidItem({
+function TaskItemLayout({
   Icon,
   Title,
   SubTitle,
@@ -33,4 +33,4 @@ function DoOrDidItem({
   );
 }
 
-export default DoOrDidItem;
+export default TaskItemLayout;
