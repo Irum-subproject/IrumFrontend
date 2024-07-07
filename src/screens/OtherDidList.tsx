@@ -1,5 +1,5 @@
 import {ScreenLayout, TaskBoxLayout} from 'components/layout';
-import {Col0, Col10, Col20, Col24} from 'components/atomic/RowColumn.tsx';
+import {Col0, Col10} from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
 import {TaskItemLayout} from 'components/layout';

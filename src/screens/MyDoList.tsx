@@ -1,13 +1,6 @@
 import React, {Fragment, useState} from 'react';
 import {TaskItemLayout, ScreenLayout, TaskBoxLayout} from 'components/layout';
-import {
-  Col10,
-  Col20,
-  Col24,
-  Col8,
-  Row0,
-  Row4,
-} from 'components/atomic/RowColumn.tsx';
+import {Col10, Col20, Col8, Row0, Row4} from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
 import {LongButton, ShortButton} from 'components/atomic/buttons';

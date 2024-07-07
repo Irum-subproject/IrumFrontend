@@ -6,10 +6,12 @@ import MyDoListIcon from 'assets/icon/bottomBarIcon/MyDoListIcon.tsx';
 import OtherDidListIcon from 'assets/icon/bottomBarIcon/OtherDidListIcon.tsx';
 import ChattingIcon from 'assets/icon/bottomBarIcon/ChattingIcon.tsx';
 import MyInfoIcon from 'assets/icon/bottomBarIcon/MyInfoIcon.tsx';
+import SearchIcon from 'assets/icon/SearchIcon.tsx';
 
 export {
   Logo,
   ArrowIcon,
+  SearchIcon,
   Bell,
   HomeIcon,
   MyDoListIcon,

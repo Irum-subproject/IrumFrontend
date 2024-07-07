@@ -97,11 +97,11 @@ function Home(): React.JSX.Element {
             <TaskBoxLayout
               titleSection={{
                 left: '목록',
-                right: (
+                right: [
                   <IconButton handler={() => {}}>
                     <ArrowIcon rotate={180} color={'gray300'} />
-                  </IconButton>
-                ),
+                  </IconButton>,
+                ],
               }}>
               {MyDoListInfo.map((v, i) => (
                 <TaskItemLayout
@@ -135,11 +135,11 @@ function Home(): React.JSX.Element {
             <TaskBoxLayout
               titleSection={{
                 left: '관리',
-                right: (
+                right: [
                   <IconButton handler={() => {}}>
                     <ArrowIcon rotate={180} color={'gray300'} />
-                  </IconButton>
-                ),
+                  </IconButton>,
+                ],
               }}>
               {OtherDidListInfo.map((v, i) => (
                 <TaskItemLayout
@@ -179,7 +179,7 @@ function Home(): React.JSX.Element {
             <TaskBoxLayout
               titleSection={{
                 left: '계약',
-                right: (
+                right: [
                   <IconButton handler={() => {}}>
                     <Row4 alignItems={'center'}>
                       <Typo.Content.Normal color={'gray300'}>
@@ -187,8 +187,8 @@ function Home(): React.JSX.Element {
                       </Typo.Content.Normal>
                       <ArrowIcon rotate={270} color={'gray300'} />
                     </Row4>
-                  </IconButton>
-                ),
+                  </IconButton>,
+                ],
               }}>
               {ContractInfo.map((v, i) => (
                 <TaskItemLayout
