@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import {TaskItemLayout, ScreenLayout} from 'components/layout';
+import {TaskItemLayout, ScreenLayout, TaskBoxLayout} from 'components/layout';
 import {
   Col10,
   Col20,
@@ -32,16 +32,16 @@ const taskPeriod = [
 function DoTask({index}: {index: number}) {
   return (
     <Fragment>
-      <Col24>
-        <Row0>
-          <Typo.Body.Semi>{taskPeriod[index].period}</Typo.Body.Semi>
-          <Row4>
+      <TaskBoxLayout
+        titleSection={{
+          left: taskPeriod[index].period,
+          right: [
             <Typo.Caption.Regular color={taskPeriod[index].periodColor}>
               01시 37분
-            </Typo.Caption.Regular>
-            <Typo.Caption.Regular color={'gray400'}>남음</Typo.Caption.Regular>
-          </Row4>
-        </Row0>
+            </Typo.Caption.Regular>,
+            <Typo.Caption.Regular color={'gray400'}>남음</Typo.Caption.Regular>,
+          ],
+        }}>
         <Col20>
           <TaskItemLayout
             Icon={<TempIcon />}
@@ -122,7 +122,7 @@ function DoTask({index}: {index: number}) {
             }
           />
         </Col20>
-      </Col24>
+      </TaskBoxLayout>
       <Divider />
     </Fragment>
   );
@@ -183,10 +183,7 @@ function MyDoList() {
             <DoTask index={0} />
             {isShowMore && <DoTask index={1} />}
             {isShowMore && <DoTask index={2} />}
-            <Col24>
-              <Row0>
-                <Typo.Body.Semi>완료됨</Typo.Body.Semi>
-              </Row0>
+            <TaskBoxLayout titleSection={{left: '완료됨'}}>
               {DoneInfo.map((v, i) => (
                 <TaskItemLayout
                   key={i}
@@ -203,7 +200,7 @@ function MyDoList() {
                   }
                 />
               ))}
-            </Col24>
+            </TaskBoxLayout>
             <Divider />
             {!isShowMore && (
               <LongButton

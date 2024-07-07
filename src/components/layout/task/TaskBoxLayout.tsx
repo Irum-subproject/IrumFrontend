@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 import {Col20, Col24, Row0, Row4} from 'components/atomic/RowColumn.tsx';
 import {Typo} from 'components/atomic/typography';
-import React from 'react';
+import React, {Fragment} from 'react';
 
 interface TaskBoxLayoutPropsInterface {
   titleSection: {
     left: string;
-    right: React.ReactNode;
+    right?: Array<React.ReactNode>;
   };
   children: React.ReactNode;
 }
@@ -16,7 +16,10 @@ function TaskBoxLayout({titleSection, children}: TaskBoxLayoutPropsInterface) {
     <Container>
       <TitleSection>
         <Title>{titleSection.left}</Title>
-        <TitleRightContainer>{titleSection.right}</TitleRightContainer>
+        <TitleRightContainer>
+          {Array.isArray(titleSection.right) &&
+            titleSection.right.map((v, i) => <Fragment key={i}>{v}</Fragment>)}
+        </TitleRightContainer>
       </TitleSection>
       <TaskItemContainer>{children}</TaskItemContainer>
     </Container>

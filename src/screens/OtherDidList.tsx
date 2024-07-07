@@ -1,5 +1,5 @@
-import {ScreenLayout} from 'components/layout';
-import {Col10, Col20, Col24} from 'components/atomic/RowColumn.tsx';
+import {ScreenLayout, TaskBoxLayout} from 'components/layout';
+import {Col0, Col10, Col20, Col24} from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
 import {TaskItemLayout} from 'components/layout';
@@ -108,10 +108,10 @@ function Section({
 }: SectionInterface) {
   return (
     <SectionContainer>
-      <Typo.Body.Semi width={'210px'} ellipsis>
-        {sectionTitle}
-      </Typo.Body.Semi>
-      <Col20>
+      <TaskBoxLayout
+        titleSection={{
+          left: sectionTitle,
+        }}>
         {impossible.isImpossible &&
           impossible.whoImpossible.map((v, i) => (
             <TaskItemLayout
@@ -189,15 +189,14 @@ function Section({
             }
           />
         ))}
-      </Col20>
+      </TaskBoxLayout>
     </SectionContainer>
   );
 }
 
-const SectionContainer = styled(Col24).attrs({
-  width: '100%',
-  padding: [20],
+const SectionContainer = styled(Col0).attrs({
   backgroundColor: 'gray50',
+  padding: [20],
 })``;
 
 function OtherDidList() {
