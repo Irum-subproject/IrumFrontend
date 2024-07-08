@@ -1,11 +1,12 @@
 import React, {Fragment, useState} from 'react';
 import {TaskItemLayout, ScreenLayout, TaskBoxLayout} from 'components/layout';
-import {Col10, Col20, Col8, Row0, Row4} from 'components/atomic/RowColumn.tsx';
+import {Col10, Col20, Row4} from 'components/atomic/RowColumn.tsx';
 import styled from 'styled-components/native';
 import {Typo} from 'components/atomic/typography';
 import {LongButton, ShortButton} from 'components/atomic/buttons';
 import Divider from 'components/atomic/Divider.tsx';
 import ArrowIcon from 'assets/icon/arrow/ArrowIcon.tsx';
+import {Timer} from 'components/atomic';
 
 const taskPeriod = [
   {
@@ -121,6 +122,14 @@ function DoTask({index}: {index: number}) {
   );
 }
 
+const TimerSection = () => (
+  <Section>
+    <Timer timerTitle={'수학공부'} defaultTime={'00 : 31 : 54'} />
+    <Divider />
+    <Timer timerTitle={'운동하기'} defaultTime={'-00 : 31 : 54'} />
+  </Section>
+);
+
 function MyDoList() {
   const DoneInfo = [
     {
@@ -143,35 +152,7 @@ function MyDoList() {
       headerOption={{title: {isTitle: true, contents: '할 일 목록'}}}>
       <Fragment>
         <Col10>
-          <Section>
-            <Col8>
-              <Typo.Body.Semi color={'gray400'}>수학 공부</Typo.Body.Semi>
-              <Row0>
-                <Typo.Title.Semi>00 : 31 : 54</Typo.Title.Semi>
-                <ShortButton
-                  buttonTitle={'중단하기'}
-                  buttonColor={'warnRed'}
-                  titleColor={'gray50'}
-                  handler={() => {}}
-                />
-              </Row0>
-            </Col8>
-            <Divider />
-            <Col8>
-              <Typo.Body.Semi color={'gray400'}>운동하기</Typo.Body.Semi>
-              <Row0>
-                <Typo.Title.Semi color={'primary700'}>
-                  00 : 31 : 54
-                </Typo.Title.Semi>
-                <ShortButton
-                  buttonTitle={'인증하기'}
-                  buttonColor={'primary600'}
-                  titleColor={'gray50'}
-                  handler={() => {}}
-                />
-              </Row0>
-            </Col8>
-          </Section>
+          <TimerSection />
           <Section>
             <DoTask index={0} />
             {isShowMore && <DoTask index={1} />}

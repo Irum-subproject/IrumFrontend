@@ -56,6 +56,175 @@ const ContractInfo = [
   },
 ];
 
+const PayAndPaidSection = () => (
+  <Row12 width={'100%'} justifyContent={'space-between'}>
+    <BoxContainer justifyContent={'center'} alignItems={'center'}>
+      <Col4>
+        <Typo.SubBody.Normal color={'gray400'}>입금</Typo.SubBody.Normal>
+        <Typo.Headline.Semi color={'primary600'}>+10000</Typo.Headline.Semi>
+      </Col4>
+    </BoxContainer>
+    <BoxContainer justifyContent={'center'} alignItems={'center'}>
+      <Col4>
+        <Typo.SubBody.Normal color={'gray400'}>출금</Typo.SubBody.Normal>
+        <Typo.Headline.Semi color={'warnRed'}>+10000</Typo.Headline.Semi>
+      </Col4>
+    </BoxContainer>
+  </Row12>
+);
+
+const TimerSection = () => (
+  <BoxContainer>
+    <Timer defaultTime={'00 : 31 : 54'} timerTitle={'수학 공부'} />
+    <Divider />
+    <Timer defaultTime={'- 00 : 02 : 17'} timerTitle={'운동하기'} />
+  </BoxContainer>
+);
+
+const ListSection = () => (
+  <BoxContainer>
+    <TaskBoxLayout
+      titleSection={{
+        left: '목록',
+        right: [
+          <IconButton handler={() => {}}>
+            <ArrowIcon rotate={180} color={'gray300'} />
+          </IconButton>,
+        ],
+      }}>
+      {MyDoListInfo.map((v, i) => (
+        <TaskItemLayout
+          key={i}
+          Icon={<TempIcon />}
+          Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
+          SubTitle={
+            <Row4>
+              <Typo.Caption.Regular color={v.leftTimeColor}>
+                {v.leftTime}
+              </Typo.Caption.Regular>
+              <Typo.Caption.Regular color={'gray400'}>
+                남음
+              </Typo.Caption.Regular>
+            </Row4>
+          }
+          Button={
+            <ShortButton
+              buttonColor={'gray100'}
+              buttonTitle={'시작'}
+              titleColor={'gray500'}
+              handler={() => {}}
+            />
+          }
+        />
+      ))}
+    </TaskBoxLayout>
+  </BoxContainer>
+);
+
+const ManageSection = () => (
+  <BoxContainer>
+    <TaskBoxLayout
+      titleSection={{
+        left: '관리',
+        right: [
+          <IconButton handler={() => {}}>
+            <ArrowIcon rotate={180} color={'gray300'} />
+          </IconButton>,
+        ],
+      }}>
+      {OtherDidListInfo.map((v, i) => (
+        <TaskItemLayout
+          key={i}
+          Icon={<TempIcon />}
+          Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
+          SubTitle={
+            <Row4>
+              <Typo.Caption.Regular color={'gray400'}>
+                {v.leftTime}
+              </Typo.Caption.Regular>
+            </Row4>
+          }
+          Button={
+            v.buttonType === 'check' ? (
+              <ShortButton
+                buttonColor={'gray100'}
+                buttonTitle={'확인'}
+                titleColor={'gray500'}
+                handler={() => {}}
+              />
+            ) : (
+              <ShortButton
+                buttonColor={'primary600'}
+                buttonTitle={'상세'}
+                titleColor={'gray50'}
+                handler={() => {}}
+              />
+            )
+          }
+        />
+      ))}
+    </TaskBoxLayout>
+  </BoxContainer>
+);
+
+const ContractSection = () => (
+  <BoxContainer>
+    <TaskBoxLayout
+      titleSection={{
+        left: '계약',
+        right: [
+          <IconButton handler={() => {}}>
+            <Row4 alignItems={'center'}>
+              <Typo.Content.Normal color={'gray300'}>
+                더보기
+              </Typo.Content.Normal>
+              <ArrowIcon rotate={270} color={'gray300'} />
+            </Row4>
+          </IconButton>,
+        ],
+      }}>
+      {ContractInfo.map((v, i) => (
+        <TaskItemLayout
+          key={i}
+          Icon={<TempIcon />}
+          Title={
+            <Row4>
+              <Typo.Content.Normal>{v.contractName}</Typo.Content.Normal>
+              <Typo.Content.Normal>-</Typo.Content.Normal>
+              <Typo.Content.Normal>{v.contractMember}</Typo.Content.Normal>
+            </Row4>
+          }
+          SubTitle={
+            <Row4>
+              <Typo.Caption.Regular color={'gray400'}>
+                최소 기간
+              </Typo.Caption.Regular>
+              <Typo.Caption.Regular color={'gray400'}>
+                {v.minimumContractPeriod}
+              </Typo.Caption.Regular>
+            </Row4>
+          }
+          Button={
+            <IconButton handler={() => {}}>
+              <ArrowIcon rotate={180} color={'gray300'} />
+            </IconButton>
+          }
+        />
+      ))}
+    </TaskBoxLayout>
+    <Divider />
+    <TaskItemLayout
+      Title={<Typo.Content.Normal>계약 추가</Typo.Content.Normal>}
+      Icon={<TempIcon />}
+      Button={
+        <IconButton handler={() => {}}>
+          <ArrowIcon rotate={180} color={'gray300'} />
+        </IconButton>
+      }
+    />
+  </BoxContainer>
+);
+
 function Home(): React.JSX.Element {
   return (
     <ScreenLayout
@@ -63,177 +232,11 @@ function Home(): React.JSX.Element {
       backgroundColor={'gray100'}>
       <Fragment>
         <Col20 width={'100%'} padding={[20]}>
-          {/*pay and paid section*/}
-          <Row12 width={'100%'} justifyContent={'space-between'}>
-            <BoxContainer justifyContent={'center'} alignItems={'center'}>
-              <Col4>
-                <Typo.SubBody.Normal color={'gray400'}>
-                  입금
-                </Typo.SubBody.Normal>
-                <Typo.Headline.Semi color={'primary600'}>
-                  +10000
-                </Typo.Headline.Semi>
-              </Col4>
-            </BoxContainer>
-            <BoxContainer justifyContent={'center'} alignItems={'center'}>
-              <Col4>
-                <Typo.SubBody.Normal color={'gray400'}>
-                  출금
-                </Typo.SubBody.Normal>
-                <Typo.Headline.Semi color={'warnRed'}>
-                  +10000
-                </Typo.Headline.Semi>
-              </Col4>
-            </BoxContainer>
-          </Row12>
-          {/*timer section*/}
-          <BoxContainer>
-            <Timer defaultTime={'00 : 31 : 54'} timerTitle={'수학 공부'} />
-            <Divider />
-            <Timer defaultTime={'- 00 : 02 : 17'} timerTitle={'운동하기'} />
-          </BoxContainer>
-          {/*list section*/}
-          <BoxContainer>
-            <TaskBoxLayout
-              titleSection={{
-                left: '목록',
-                right: [
-                  <IconButton handler={() => {}}>
-                    <ArrowIcon rotate={180} color={'gray300'} />
-                  </IconButton>,
-                ],
-              }}>
-              {MyDoListInfo.map((v, i) => (
-                <TaskItemLayout
-                  key={i}
-                  Icon={<TempIcon />}
-                  Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
-                  SubTitle={
-                    <Row4>
-                      <Typo.Caption.Regular color={v.leftTimeColor}>
-                        {v.leftTime}
-                      </Typo.Caption.Regular>
-                      <Typo.Caption.Regular color={'gray400'}>
-                        남음
-                      </Typo.Caption.Regular>
-                    </Row4>
-                  }
-                  Button={
-                    <ShortButton
-                      buttonColor={'gray100'}
-                      buttonTitle={'시작'}
-                      titleColor={'gray500'}
-                      handler={() => {}}
-                    />
-                  }
-                />
-              ))}
-            </TaskBoxLayout>
-          </BoxContainer>
-          {/*manage section*/}
-          <BoxContainer>
-            <TaskBoxLayout
-              titleSection={{
-                left: '관리',
-                right: [
-                  <IconButton handler={() => {}}>
-                    <ArrowIcon rotate={180} color={'gray300'} />
-                  </IconButton>,
-                ],
-              }}>
-              {OtherDidListInfo.map((v, i) => (
-                <TaskItemLayout
-                  key={i}
-                  Icon={<TempIcon />}
-                  Title={<Typo.Content.Normal>{v.title}</Typo.Content.Normal>}
-                  SubTitle={
-                    <Row4>
-                      <Typo.Caption.Regular color={'gray400'}>
-                        {v.leftTime}
-                      </Typo.Caption.Regular>
-                    </Row4>
-                  }
-                  Button={
-                    v.buttonType === 'check' ? (
-                      <ShortButton
-                        buttonColor={'gray100'}
-                        buttonTitle={'확인'}
-                        titleColor={'gray500'}
-                        handler={() => {}}
-                      />
-                    ) : (
-                      <ShortButton
-                        buttonColor={'primary600'}
-                        buttonTitle={'상세'}
-                        titleColor={'gray50'}
-                        handler={() => {}}
-                      />
-                    )
-                  }
-                />
-              ))}
-            </TaskBoxLayout>
-          </BoxContainer>
-          {/*contract section*/}
-          <BoxContainer>
-            <TaskBoxLayout
-              titleSection={{
-                left: '계약',
-                right: [
-                  <IconButton handler={() => {}}>
-                    <Row4 alignItems={'center'}>
-                      <Typo.Content.Normal color={'gray300'}>
-                        더보기
-                      </Typo.Content.Normal>
-                      <ArrowIcon rotate={270} color={'gray300'} />
-                    </Row4>
-                  </IconButton>,
-                ],
-              }}>
-              {ContractInfo.map((v, i) => (
-                <TaskItemLayout
-                  key={i}
-                  Icon={<TempIcon />}
-                  Title={
-                    <Row4>
-                      <Typo.Content.Normal>
-                        {v.contractName}
-                      </Typo.Content.Normal>
-                      <Typo.Content.Normal>-</Typo.Content.Normal>
-                      <Typo.Content.Normal>
-                        {v.contractMember}
-                      </Typo.Content.Normal>
-                    </Row4>
-                  }
-                  SubTitle={
-                    <Row4>
-                      <Typo.Caption.Regular color={'gray400'}>
-                        최소 기간
-                      </Typo.Caption.Regular>
-                      <Typo.Caption.Regular color={'gray400'}>
-                        {v.minimumContractPeriod}
-                      </Typo.Caption.Regular>
-                    </Row4>
-                  }
-                  Button={
-                    <IconButton handler={() => {}}>
-                      <ArrowIcon rotate={180} color={'gray300'} />
-                    </IconButton>
-                  }
-                />
-              ))}
-            </TaskBoxLayout>
-            <Divider />
-            <TaskItemLayout
-              Title={<Typo.Content.Normal>계약 추가</Typo.Content.Normal>}
-              Icon={<TempIcon />}
-              Button={
-                <IconButton handler={() => {}}>
-                  <ArrowIcon rotate={180} color={'gray300'} />
-                </IconButton>
-              }
-            />
-          </BoxContainer>
+          <PayAndPaidSection />
+          <TimerSection />
+          <ListSection />
+          <ManageSection />
+          <ContractSection />
         </Col20>
       </Fragment>
     </ScreenLayout>
